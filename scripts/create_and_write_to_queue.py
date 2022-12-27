@@ -1,7 +1,7 @@
 import json
 import gzip
 import localstack_client.session as boto3
-
+import os
 QUEUE_NAME = "login-queue"
 
 
@@ -12,6 +12,7 @@ def send_messages():
 
     with gzip.open("/tmp/data/sample_data.json.gz", "r") as f:
         data = json.load(f)
+        print(data)
 
     assert len(data) == 100
 
@@ -23,7 +24,6 @@ def send_messages():
 
 def main():
     send_messages()
-
 
 if __name__ == "__main__":
     main()

@@ -12,11 +12,13 @@ services:
       - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
       - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
       - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOSTNAME_EXTERNAL=localstack
     volumes:
       - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - ${PWD}/data/sample_data.json.gz:/tmp/data/sample_data.json.gz
       - ${PWD}/scripts/create_and_write_to_queue.py:/tmp/scripts/create_and_write_to_queue.py
+      - ${PWD}/scripts/transformation.py:/tmp/scripts/transformation.py
       - ${PWD}/scripts/01_call_python_scripts.sh:/docker-entrypoint-initaws.d/01_call_python_scripts.sh
   postgres:
     image: postgres:10
