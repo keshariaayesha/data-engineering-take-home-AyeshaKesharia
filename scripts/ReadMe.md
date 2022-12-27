@@ -9,6 +9,7 @@ I created a python file to process the json data files called transformation.py.
 ## Implementation Procedure
 We can read messages from the queue using boto3 client function. This helps us to connect to the AWS account and create a queue and pull the json file. I masked the columns using label encoder. I used this method because this is an excellent way to also identify duplicate values from the masked the data. The unmasking process is also easy, just use inverse_transform function at the receiver side and the data is decrypted back to its original form. 
 The application will run on the AWS server since the SQS data queue is hosted on AWS. 
+The transformed data is stored in a postgresql table. PostgreSql server is hosted on Docker desktop. All the connection details were taken from there. 
 
 
 ## Future scope
