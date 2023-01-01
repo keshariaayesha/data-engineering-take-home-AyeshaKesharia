@@ -5,8 +5,12 @@ import create_and_write_to_queue
 from flatten_json import flatten
 from sklearn import preprocessing
 import psycopg2
+import os
 
-with open('C:/Users/ashan/IdeaProjects/data-engineering-take-home/data/sample_data.json.gz','rb') as f:
+os.chdir('../')
+
+url = './data/sample_data.json.gz'
+with open(url,'rb') as f:
     gzip_fd = gzip.GzipFile(fileobj=f)
     d = json.loads(gzip_fd.read())
 
